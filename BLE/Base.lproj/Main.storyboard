@@ -19,7 +19,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="L7p-w3-HtP">
-                                <rect key="frame" x="150" y="318" width="75" height="30"/>
+                                <rect key="frame" x="130" y="298" width="115" height="69"/>
                                 <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <state key="normal" title="LED State">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -31,10 +31,10 @@
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="L7p-w3-HtP" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="150" id="5Th-hR-ZeE"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="L7p-w3-HtP" secondAttribute="bottom" constant="319" id="Hqi-x7-Z38"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="L7p-w3-HtP" secondAttribute="trailing" constant="150" id="Lg1-SR-9bb"/>
-                            <constraint firstItem="L7p-w3-HtP" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="298" id="zRS-t9-4AI"/>
+                            <constraint firstItem="L7p-w3-HtP" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="130" id="5Th-hR-ZeE"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="L7p-w3-HtP" secondAttribute="bottom" constant="300" id="Hqi-x7-Z38"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="L7p-w3-HtP" secondAttribute="trailing" constant="130" id="Lg1-SR-9bb"/>
+                            <constraint firstItem="L7p-w3-HtP" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="278" id="zRS-t9-4AI"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
