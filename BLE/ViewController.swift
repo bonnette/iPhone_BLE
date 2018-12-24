@@ -9,8 +9,8 @@
 import UIKit
 import CoreBluetooth
 
-let svcLight = CBUUID.init(string: "DF01")
-let charLightConfig = CBUUID.init(string: "DF02")
+let arduinoSvc = CBUUID.init(string: "DF01")
+let arduinoLEDchar = CBUUID.init(string: "DF02")
 
 class ViewController: UIViewController, CBCentralManagerDelegate, CBPeripheralDelegate {
     func centralManagerDidUpdateState(_ central: CBCentralManager) {
@@ -43,7 +43,7 @@ class ViewController: UIViewController, CBCentralManagerDelegate, CBPeripheralDe
     func peripheral(_ peripheral: CBPeripheral, didDiscoverServices error: Error?) {
         if let services = peripheral.services {
             for svc in services {
-                if svc.uuid == svcLight {
+                if svc.uuid == arduinoSvc {
                     print ("We have found ", svc.uuid.uuidString)
                     peripheral.discoverCharacteristics(nil, for: svc)
                 }
@@ -55,7 +55,7 @@ class ViewController: UIViewController, CBCentralManagerDelegate, CBPeripheralDe
         if let chars = service.characteristics {
             for char in chars {
                 print (char.uuid.uuidString)
-                if char.uuid == charLightConfig {
+                if char.uuid == arduinoLEDchar {
                     if char.properties.contains(CBCharacteristicProperties.writeWithoutResponse) {
                         peripheral.writeValue(Data.init(bytes: [41]), for: char, type: CBCharacteristicWriteType.withoutResponse)
                     }
