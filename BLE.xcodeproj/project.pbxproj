@@ -12,26 +12,8 @@
 		C2A9A01C20337E10005DFB17 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C2A9A01A20337E10005DFB17 /* Main.storyboard */; };
 		C2A9A01E20337E10005DFB17 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C2A9A01D20337E10005DFB17 /* Assets.xcassets */; };
 		C2A9A02120337E10005DFB17 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C2A9A01F20337E10005DFB17 /* LaunchScreen.storyboard */; };
-		C2A9A02C20337E10005DFB17 /* BLETests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2A9A02B20337E10005DFB17 /* BLETests.swift */; };
-		C2A9A03720337E10005DFB17 /* BLEUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2A9A03620337E10005DFB17 /* BLEUITests.swift */; };
+		C2A9A04620337E2B005DFB17 /* CoreBluetooth.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C2A9A04520337E2B005DFB17 /* CoreBluetooth.framework */; };
 /* End PBXBuildFile section */
-
-/* Begin PBXContainerItemProxy section */
-		C2A9A02820337E10005DFB17 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = C2A9A00B20337E10005DFB17 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = C2A9A01220337E10005DFB17;
-			remoteInfo = BLE;
-		};
-		C2A9A03320337E10005DFB17 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = C2A9A00B20337E10005DFB17 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = C2A9A01220337E10005DFB17;
-			remoteInfo = BLE;
-		};
-/* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
 		C2A9A01320337E10005DFB17 /* BLE.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BLE.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -41,12 +23,7 @@
 		C2A9A01D20337E10005DFB17 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		C2A9A02020337E10005DFB17 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		C2A9A02220337E10005DFB17 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		C2A9A02720337E10005DFB17 /* BLETests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BLETests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		C2A9A02B20337E10005DFB17 /* BLETests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BLETests.swift; sourceTree = "<group>"; };
-		C2A9A02D20337E10005DFB17 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		C2A9A03220337E10005DFB17 /* BLEUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BLEUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		C2A9A03620337E10005DFB17 /* BLEUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BLEUITests.swift; sourceTree = "<group>"; };
-		C2A9A03820337E10005DFB17 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		C2A9A04520337E2B005DFB17 /* CoreBluetooth.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreBluetooth.framework; path = System/Library/Frameworks/CoreBluetooth.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -54,20 +31,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		C2A9A02420337E10005DFB17 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		C2A9A02F20337E10005DFB17 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
+				C2A9A04620337E2B005DFB17 /* CoreBluetooth.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -78,9 +42,8 @@
 			isa = PBXGroup;
 			children = (
 				C2A9A01520337E10005DFB17 /* BLE */,
-				C2A9A02A20337E10005DFB17 /* BLETests */,
-				C2A9A03520337E10005DFB17 /* BLEUITests */,
 				C2A9A01420337E10005DFB17 /* Products */,
+				C2A9A04420337E2B005DFB17 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -88,8 +51,6 @@
 			isa = PBXGroup;
 			children = (
 				C2A9A01320337E10005DFB17 /* BLE.app */,
-				C2A9A02720337E10005DFB17 /* BLETests.xctest */,
-				C2A9A03220337E10005DFB17 /* BLEUITests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -107,22 +68,12 @@
 			path = BLE;
 			sourceTree = "<group>";
 		};
-		C2A9A02A20337E10005DFB17 /* BLETests */ = {
+		C2A9A04420337E2B005DFB17 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				C2A9A02B20337E10005DFB17 /* BLETests.swift */,
-				C2A9A02D20337E10005DFB17 /* Info.plist */,
+				C2A9A04520337E2B005DFB17 /* CoreBluetooth.framework */,
 			);
-			path = BLETests;
-			sourceTree = "<group>";
-		};
-		C2A9A03520337E10005DFB17 /* BLEUITests */ = {
-			isa = PBXGroup;
-			children = (
-				C2A9A03620337E10005DFB17 /* BLEUITests.swift */,
-				C2A9A03820337E10005DFB17 /* Info.plist */,
-			);
-			path = BLEUITests;
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -145,42 +96,6 @@
 			productReference = C2A9A01320337E10005DFB17 /* BLE.app */;
 			productType = "com.apple.product-type.application";
 		};
-		C2A9A02620337E10005DFB17 /* BLETests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = C2A9A03E20337E10005DFB17 /* Build configuration list for PBXNativeTarget "BLETests" */;
-			buildPhases = (
-				C2A9A02320337E10005DFB17 /* Sources */,
-				C2A9A02420337E10005DFB17 /* Frameworks */,
-				C2A9A02520337E10005DFB17 /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				C2A9A02920337E10005DFB17 /* PBXTargetDependency */,
-			);
-			name = BLETests;
-			productName = BLETests;
-			productReference = C2A9A02720337E10005DFB17 /* BLETests.xctest */;
-			productType = "com.apple.product-type.bundle.unit-test";
-		};
-		C2A9A03120337E10005DFB17 /* BLEUITests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = C2A9A04120337E10005DFB17 /* Build configuration list for PBXNativeTarget "BLEUITests" */;
-			buildPhases = (
-				C2A9A02E20337E10005DFB17 /* Sources */,
-				C2A9A02F20337E10005DFB17 /* Frameworks */,
-				C2A9A03020337E10005DFB17 /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				C2A9A03420337E10005DFB17 /* PBXTargetDependency */,
-			);
-			name = BLEUITests;
-			productName = BLEUITests;
-			productReference = C2A9A03220337E10005DFB17 /* BLEUITests.xctest */;
-			productType = "com.apple.product-type.bundle.ui-testing";
-		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -188,22 +103,13 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0920;
-				LastUpgradeCheck = 0920;
+				LastUpgradeCheck = 1010;
 				ORGANIZATIONNAME = "Bear Cahill";
 				TargetAttributes = {
 					C2A9A01220337E10005DFB17 = {
 						CreatedOnToolsVersion = 9.2;
+						LastSwiftMigration = 1010;
 						ProvisioningStyle = Automatic;
-					};
-					C2A9A02620337E10005DFB17 = {
-						CreatedOnToolsVersion = 9.2;
-						ProvisioningStyle = Automatic;
-						TestTargetID = C2A9A01220337E10005DFB17;
-					};
-					C2A9A03120337E10005DFB17 = {
-						CreatedOnToolsVersion = 9.2;
-						ProvisioningStyle = Automatic;
-						TestTargetID = C2A9A01220337E10005DFB17;
 					};
 				};
 			};
@@ -221,8 +127,6 @@
 			projectRoot = "";
 			targets = (
 				C2A9A01220337E10005DFB17 /* BLE */,
-				C2A9A02620337E10005DFB17 /* BLETests */,
-				C2A9A03120337E10005DFB17 /* BLEUITests */,
 			);
 		};
 /* End PBXProject section */
@@ -238,20 +142,6 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		C2A9A02520337E10005DFB17 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		C2A9A03020337E10005DFB17 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -264,36 +154,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		C2A9A02320337E10005DFB17 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				C2A9A02C20337E10005DFB17 /* BLETests.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		C2A9A02E20337E10005DFB17 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				C2A9A03720337E10005DFB17 /* BLEUITests.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXSourcesBuildPhase section */
-
-/* Begin PBXTargetDependency section */
-		C2A9A02920337E10005DFB17 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = C2A9A01220337E10005DFB17 /* BLE */;
-			targetProxy = C2A9A02820337E10005DFB17 /* PBXContainerItemProxy */;
-		};
-		C2A9A03420337E10005DFB17 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = C2A9A01220337E10005DFB17 /* BLE */;
-			targetProxy = C2A9A03320337E10005DFB17 /* PBXContainerItemProxy */;
-		};
-/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		C2A9A01A20337E10005DFB17 /* Main.storyboard */ = {
@@ -329,6 +190,7 @@
 				CLANG_WARN_BOOL_CONVERSION = YES;
 				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
 				CLANG_WARN_EMPTY_BODY = YES;
@@ -336,6 +198,7 @@
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
@@ -386,6 +249,7 @@
 				CLANG_WARN_BOOL_CONVERSION = YES;
 				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
 				CLANG_WARN_EMPTY_BODY = YES;
@@ -393,6 +257,7 @@
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
@@ -427,11 +292,12 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = K4E22MX9WD;
 				INFOPLIST_FILE = BLE/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.example.BLE;
+				PRODUCT_BUNDLE_IDENTIFIER = com.bubbles.BLE;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
@@ -441,74 +307,13 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = K4E22MX9WD;
 				INFOPLIST_FILE = BLE/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.example.BLE;
+				PRODUCT_BUNDLE_IDENTIFIER = com.bubbles.BLE;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
-			};
-			name = Release;
-		};
-		C2A9A03F20337E10005DFB17 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				CODE_SIGN_STYLE = Automatic;
-				INFOPLIST_FILE = BLETests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.example.BLETests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/BLE.app/BLE";
-			};
-			name = Debug;
-		};
-		C2A9A04020337E10005DFB17 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				CODE_SIGN_STYLE = Automatic;
-				INFOPLIST_FILE = BLETests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.example.BLETests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/BLE.app/BLE";
-			};
-			name = Release;
-		};
-		C2A9A04220337E10005DFB17 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				CODE_SIGN_STYLE = Automatic;
-				INFOPLIST_FILE = BLEUITests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.example.BLEUITests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_TARGET_NAME = BLE;
-			};
-			name = Debug;
-		};
-		C2A9A04320337E10005DFB17 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				CODE_SIGN_STYLE = Automatic;
-				INFOPLIST_FILE = BLEUITests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.example.BLEUITests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_TARGET_NAME = BLE;
 			};
 			name = Release;
 		};
@@ -529,24 +334,6 @@
 			buildConfigurations = (
 				C2A9A03C20337E10005DFB17 /* Debug */,
 				C2A9A03D20337E10005DFB17 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		C2A9A03E20337E10005DFB17 /* Build configuration list for PBXNativeTarget "BLETests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				C2A9A03F20337E10005DFB17 /* Debug */,
-				C2A9A04020337E10005DFB17 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		C2A9A04120337E10005DFB17 /* Build configuration list for PBXNativeTarget "BLEUITests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				C2A9A04220337E10005DFB17 /* Debug */,
-				C2A9A04320337E10005DFB17 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
