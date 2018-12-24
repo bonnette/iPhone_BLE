@@ -11,8 +11,15 @@ import CoreBluetooth
 
 let arduinoSvc = CBUUID.init(string: "DF01")
 let arduinoLEDchar = CBUUID.init(string: "DF02")
+var LedSendChar: CBCharacteristic!
+var savedPeripheral: CBPeripheral?
 
 class ViewController: UIViewController, CBCentralManagerDelegate, CBPeripheralDelegate {
+
+    @IBAction func LedStateButton(_ sender: UIButton) {
+        print("Button Clicked")
+        savedPeripheral!.writeValue(Data.init(bytes: [41]), for: LedSendChar, type: CBCharacteristicWriteType.withResponse)
+    }
     func centralManagerDidUpdateState(_ central: CBCentralManager) {
         if central.state == CBManagerState.poweredOn {
             central.scanForPeripherals(withServices: nil, options: nil)
@@ -22,6 +29,7 @@ class ViewController: UIViewController, CBCentralManagerDelegate, CBPeripheralDe
     
     func centralManager(_ central: CBCentralManager, didDiscover peripheral: CBPeripheral, advertisementData: [String : Any], rssi RSSI: NSNumber) {
         if peripheral.name?.contains("ESP") == true {
+            savedPeripheral = peripheral // place the peripheral in global for use in button
             print ("The pName is ", peripheral.name ?? "no name")
             centralManager.stopScan()
             print ("The Advert data is ", advertisementData)
@@ -56,12 +64,13 @@ class ViewController: UIViewController, CBCentralManagerDelegate, CBPeripheralDe
             for char in chars {
                 print (char.uuid.uuidString)
                 if char.uuid == arduinoLEDchar {
-                    if char.properties.contains(CBCharacteristicProperties.writeWithoutResponse) {
-                        peripheral.writeValue(Data.init(bytes: [41]), for: char, type: CBCharacteristicWriteType.withoutResponse)
-                    }
-                    else {
-                        peripheral.writeValue(Data.init(bytes: [41]), for: char, type: CBCharacteristicWriteType.withResponse)
-                    }
+                    LedSendChar = char // place the charateristic in global for use in button
+//                   if char.properties.contains(CBCharacteristicProperties.writeWithoutResponse) {
+//                        peripheral.writeValue(Data.init(bytes: [41]), for: char, type: CBCharacteristicWriteType.withoutResponse)
+//                    }
+//                    else {
+//                        peripheral.writeValue(Data.init(bytes: [41]), for: char, type: CBCharacteristicWriteType.withResponse)
+//                    }
                 }
             }
         }
