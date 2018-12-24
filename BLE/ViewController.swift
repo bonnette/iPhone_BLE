@@ -13,13 +13,21 @@ let arduinoSvc = CBUUID.init(string: "DF01")
 let arduinoLEDchar = CBUUID.init(string: "DF02")
 var LedSendChar: CBCharacteristic!
 var savedPeripheral: CBPeripheral?
+var x = false
 
 class ViewController: UIViewController, CBCentralManagerDelegate, CBPeripheralDelegate {
 
     @IBAction func LedStateButton(_ sender: UIButton) {
         print("Button Clicked")
-        savedPeripheral!.writeValue(Data.init(bytes: [41]), for: LedSendChar, type: CBCharacteristicWriteType.withResponse)
+        if x {
+        savedPeripheral!.writeValue(Data.init(bytes: [42]), for: LedSendChar, type: CBCharacteristicWriteType.withResponse)
+            x = false
+        }else {
+         savedPeripheral!.writeValue(Data.init(bytes: [41]), for: LedSendChar, type: CBCharacteristicWriteType.withResponse)
+            x = true
+        }
     }
+    
     func centralManagerDidUpdateState(_ central: CBCentralManager) {
         if central.state == CBManagerState.poweredOn {
             central.scanForPeripherals(withServices: nil, options: nil)
