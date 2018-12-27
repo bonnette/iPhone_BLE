@@ -4,69 +4,78 @@
 //
 //  Created by Bear Cahill on 2/13/18.
 //  Copyright © 2018 Bear Cahill. All rights reserved.
+//  Modified by Larry Bonnette (12/2018) to control an led on an ESP32 (Arduino "like" device)
 //
 
 import UIKit
 import CoreBluetooth
 
-let arduinoSvc = CBUUID.init(string: "DF01")
-let arduinoLEDchar = CBUUID.init(string: "DF02")
-let arduinoLEDstate = CBUUID.init(string: "DF03")
-var LedSendChar: CBCharacteristic!
-var LedReadState: CBCharacteristic!
-var savedPeripheral: CBPeripheral?
-var x = false
-var led = false
+let arduinoSvc = CBUUID.init(string: "DF01") // The Arduino service
+let arduinoLEDchar = CBUUID.init(string: "DF02") // This is the Rx charateristic on the Arduino. It is the Tx here on the iPhone
+let arduinoLEDstate = CBUUID.init(string: "DF03") // This is the Tx charateristic on the Arduino. It is the Rx here on the iPhone
+var LedSendChar: CBCharacteristic! // This is the data sent to the Arduino (for the LED on/off)
+var LedReadState: CBCharacteristic! // This is the data sent to the iPhone indicating the LED on or off state
+var savedPeripheral: CBPeripheral? // This is the peripheral name used to address the Adruino
+var x = false // This is used to keep track of the sent (on/off data) data to the Arduino
+var led = false // This holds the recieved (from the Arduino) led state (on or off)
 
+// This Viewcontroller controls the "View" as well as the "Blootooth" services
 class ViewController: UIViewController, CBCentralManagerDelegate, CBPeripheralDelegate {
 
+    // This is the button on the screen that changes the state of the LED on the ESP32 (Arduino)
     @IBAction func LedStateButton(_ sender: UIButton) {
-        print("Button Clicked")
-        if x {
+        print("Button Clicked") // sent to console for debug purposes
+        if x { // when the button is pressed. We see what we sent last (to the Arduino). (on or off)
+            
+        // This sends an "Off" signal to the Arduino
         savedPeripheral!.writeValue(Data.init(bytes: [42]), for: LedSendChar, type: CBCharacteristicWriteType.withResponse)
-            x = false
+            x = false // We sent "off" so we set x to false
         }else {
+         // This sends an "on" signal to the Arduino
          savedPeripheral!.writeValue(Data.init(bytes: [41]), for: LedSendChar, type: CBCharacteristicWriteType.withResponse)
-            x = true
+            x = true // We sent "on" so we set x to true
         }
     }
     
+    // This is the LED state lablel that changes depending on what is recieved from the Arduino.
     @IBOutlet weak var stateLabel: UILabel!
     
-    
+    // This looks to see if Bluetooth is powered on
     func centralManagerDidUpdateState(_ central: CBCentralManager) {
         if central.state == CBManagerState.poweredOn {
+            // if the power is on we look for (Scan for)  all bluetooth peripherals
             central.scanForPeripherals(withServices: nil, options: nil)
-            print ("scanning...")
+            print ("scanning...") // sent to console for debug purposes
         }
     }
     
+    // If we find a periphal we look to see if it is our ESP32
     func centralManager(_ central: CBCentralManager, didDiscover peripheral: CBPeripheral, advertisementData: [String : Any], rssi RSSI: NSNumber) {
-        if peripheral.name?.contains("ESP") == true {
+        if peripheral.name?.contains("ESP") == true { // if it's ours it will be advertising "ESP"
             savedPeripheral = peripheral // place the peripheral in global for use in button
-            print ("The pName is ", peripheral.name ?? "no name")
-            centralManager.stopScan()
-            print ("The Advert data is ", advertisementData)
-            central.connect(peripheral, options: nil)
-            myPeripheral = peripheral
+            print ("The pName is ", peripheral.name ?? "no name") // sent to console for debug purposes
+            centralManager.stopScan() // since we found ours we stop scanning
+            print ("The Advert data is ", advertisementData) // sent to console for debug purposes
+            central.connect(peripheral, options: nil) // we connect to our Adruino
         }
     }
-    
+    // if we get disconnected we start the scan again
     func centralManager(_ central: CBCentralManager, didDisconnectPeripheral peripheral: CBPeripheral, error: Error?) {
         central.scanForPeripherals(withServices: nil, options: nil)
     }
     
     func centralManager(_ central: CBCentralManager, didConnect peripheral: CBPeripheral) {
-        print ("Connected to = ", [peripheral.name])
+        print ("Connected to = ", [peripheral.name])// sent to console for debug purposes
         peripheral.discoverServices(nil)
         peripheral.delegate = self
     }
     
+    // If a service is found
     func peripheral(_ peripheral: CBPeripheral, didDiscoverServices error: Error?) {
         if let services = peripheral.services {
             for svc in services {
                 if svc.uuid == arduinoSvc {
-                    print ("We have found ", svc.uuid.uuidString)
+                    print ("We have found ", svc.uuid.uuidString) // sent to console for debug purposes
                     peripheral.discoverCharacteristics(nil, for: svc)
                 }
             }
@@ -76,12 +85,12 @@ class ViewController: UIViewController, CBCentralManagerDelegate, CBPeripheralDe
     func peripheral(_ peripheral: CBPeripheral, didDiscoverCharacteristicsFor service: CBService, error: Error?) {
         if let chars = service.characteristics {
             for char in chars {
-                print (char.uuid.uuidString)
+                print (char.uuid.uuidString) // sent to console for debug purposes
                 if char.uuid == arduinoLEDchar {
                     LedSendChar = char // place the charateristic in global for use in button
 
                 }else if char.properties.contains(CBCharacteristicProperties.notify) {
-                        print("read and notify Characteristic \(char.uuid.uuidString)")
+                        print("read and notify Characteristic \(char.uuid.uuidString)") // sent to console for debug purposes
                     LedReadState = char // Place read charateristic in global for use later
                     peripheral.setNotifyValue(true, for: char)
                 }
