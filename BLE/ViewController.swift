@@ -92,7 +92,7 @@ class ViewController: UIViewController, CBCentralManagerDelegate, CBPeripheralDe
                 let s = characteristic.value![0] // Get the ascii value of the value from the BLE device
                 let pz = Character(UnicodeScalar(s)) // Convert ascii to a charater
                 print (pz)
-                if pz == "X" {
+                if pz == "N" {
                     led = true
                     print("LED is on")
                 }else {
