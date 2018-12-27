@@ -19,7 +19,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="L7p-w3-HtP">
-                                <rect key="frame" x="130" y="298" width="115" height="69"/>
+                                <rect key="frame" x="130" y="293.5" width="115" height="73.5"/>
                                 <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <state key="normal" title="LED State">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -28,19 +28,41 @@
                                     <action selector="LedStateButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="5SI-b5-ow0"/>
                                 </connections>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="The LED state is:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fVL-SM-jeN">
+                                <rect key="frame" x="123" y="137" width="129" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Unknown" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="787-ox-q90">
+                                <rect key="frame" x="145" y="178" width="85" height="20.5"/>
+                                <fontDescription key="fontDescription" type="system" weight="heavy" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
+                            <constraint firstItem="L7p-w3-HtP" firstAttribute="top" secondItem="787-ox-q90" secondAttribute="bottom" constant="95" id="1jA-kV-H0f"/>
                             <constraint firstItem="L7p-w3-HtP" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="130" id="5Th-hR-ZeE"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="fVL-SM-jeN" secondAttribute="trailing" constant="123" id="8Ro-Ij-ir4"/>
+                            <constraint firstItem="fVL-SM-jeN" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="117" id="8Rx-qP-1vH"/>
+                            <constraint firstItem="787-ox-q90" firstAttribute="top" secondItem="fVL-SM-jeN" secondAttribute="bottom" constant="20" id="CXb-em-Cqk"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="L7p-w3-HtP" secondAttribute="bottom" constant="300" id="Hqi-x7-Z38"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="L7p-w3-HtP" secondAttribute="trailing" constant="130" id="Lg1-SR-9bb"/>
-                            <constraint firstItem="L7p-w3-HtP" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="278" id="zRS-t9-4AI"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="787-ox-q90" secondAttribute="trailing" constant="145" id="Nea-EM-H5X"/>
+                            <constraint firstItem="787-ox-q90" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="145" id="dBE-fh-LUh"/>
+                            <constraint firstItem="fVL-SM-jeN" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="123" id="ePw-U2-vgc"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
+                    <connections>
+                        <outlet property="stateLabel" destination="787-ox-q90" id="u4y-NO-1I4"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="40.799999999999997" y="26.53673163418291"/>
         </scene>
     </scenes>
 </document>

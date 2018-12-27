@@ -31,6 +31,9 @@ class ViewController: UIViewController, CBCentralManagerDelegate, CBPeripheralDe
         }
     }
     
+    @IBOutlet weak var stateLabel: UILabel!
+    
+    
     func centralManagerDidUpdateState(_ central: CBCentralManager) {
         if central.state == CBManagerState.poweredOn {
             central.scanForPeripherals(withServices: nil, options: nil)
@@ -95,9 +98,15 @@ class ViewController: UIViewController, CBCentralManagerDelegate, CBPeripheralDe
                 if pz == "N" {
                     led = true
                     print("LED is on")
+                    stateLabel.text = "ON"
+                    stateLabel.textColor = UIColor.red
+                    stateLabel.textAlignment = .center
                 }else {
                     led = false
                     print("LED is off")
+                    stateLabel.text = "OFF"
+                    stateLabel.textColor = UIColor.blue
+                    stateLabel.textAlignment = .center
                 }
             }
         
