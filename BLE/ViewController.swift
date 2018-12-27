@@ -11,9 +11,12 @@ import CoreBluetooth
 
 let arduinoSvc = CBUUID.init(string: "DF01")
 let arduinoLEDchar = CBUUID.init(string: "DF02")
+let arduinoLEDstate = CBUUID.init(string: "DF03")
 var LedSendChar: CBCharacteristic!
+var LedReadState: CBCharacteristic!
 var savedPeripheral: CBPeripheral?
 var x = false
+var led = false
 
 class ViewController: UIViewController, CBCentralManagerDelegate, CBPeripheralDelegate {
 
@@ -73,15 +76,31 @@ class ViewController: UIViewController, CBCentralManagerDelegate, CBPeripheralDe
                 print (char.uuid.uuidString)
                 if char.uuid == arduinoLEDchar {
                     LedSendChar = char // place the charateristic in global for use in button
-//                   if char.properties.contains(CBCharacteristicProperties.writeWithoutResponse) {
-//                        peripheral.writeValue(Data.init(bytes: [41]), for: char, type: CBCharacteristicWriteType.withoutResponse)
-//                    }
-//                    else {
-//                        peripheral.writeValue(Data.init(bytes: [41]), for: char, type: CBCharacteristicWriteType.withResponse)
-//                    }
+
+                }else if char.properties.contains(CBCharacteristicProperties.notify) {
+                        print("read and notify Characteristic \(char.uuid.uuidString)")
+                    LedReadState = char // Place read charateristic in global for use later
+                    peripheral.setNotifyValue(true, for: char)
                 }
             }
         }
+    }
+    
+    func peripheral(_ peripheral: CBPeripheral, didUpdateValueFor characteristic: CBCharacteristic, error: Error?) {
+
+            if characteristic.uuid == arduinoLEDstate {
+                let s = characteristic.value![0] // Get the ascii value of the value from the BLE device
+                let pz = Character(UnicodeScalar(s)) // Convert ascii to a charater
+                print (pz)
+                if pz == "X" {
+                    led = true
+                    print("LED is on")
+                }else {
+                    led = false
+                    print("LED is off")
+                }
+            }
+        
     }
 
     func peripheral(_ peripheral: CBPeripheral, didWriteValueFor characteristic: CBCharacteristic, error: Error?) {
