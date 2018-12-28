@@ -132,7 +132,7 @@ class ViewController: UIViewController, CBCentralManagerDelegate, CBPeripheralDe
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
-        centralManager = CBCentralManager.init(delegate: self, queue: nil)
+        centralManager = CBCentralManager.init(delegate: self, queue: nil) // initialize the Blootooth Central Manager
     }
 
     override func didReceiveMemoryWarning() {
