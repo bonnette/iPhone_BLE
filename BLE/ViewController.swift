@@ -63,7 +63,7 @@ class ViewController: UIViewController, CBCentralManagerDelegate, CBPeripheralDe
     func centralManager(_ central: CBCentralManager, didDisconnectPeripheral peripheral: CBPeripheral, error: Error?) {
         central.scanForPeripherals(withServices: nil, options: nil)
     }
-    
+    // If we connect to a Bluetooth device we look for services
     func centralManager(_ central: CBCentralManager, didConnect peripheral: CBPeripheral) {
         print ("Connected to = ", [peripheral.name])// sent to console for debug purposes
         peripheral.discoverServices(nil)
@@ -73,56 +73,57 @@ class ViewController: UIViewController, CBCentralManagerDelegate, CBPeripheralDe
     // If a service is found
     func peripheral(_ peripheral: CBPeripheral, didDiscoverServices error: Error?) {
         if let services = peripheral.services {
-            for svc in services {
-                if svc.uuid == arduinoSvc {
+            for svc in services { // we search through all services found
+                if svc.uuid == arduinoSvc { // If we find our Arduino services
                     print ("We have found ", svc.uuid.uuidString) // sent to console for debug purposes
-                    peripheral.discoverCharacteristics(nil, for: svc)
+                    peripheral.discoverCharacteristics(nil, for: svc) // We look for all Charateristics on the Arduino
                 }
             }
         }
     }
-    
+    // If we find charateristics
     func peripheral(_ peripheral: CBPeripheral, didDiscoverCharacteristicsFor service: CBService, error: Error?) {
         if let chars = service.characteristics {
-            for char in chars {
+            for char in chars { // we look at all charateristics
                 print (char.uuid.uuidString) // sent to console for debug purposes
-                if char.uuid == arduinoLEDchar {
+                if char.uuid == arduinoLEDchar { // we see if any of them are the send to Adruino charateristic
                     LedSendChar = char // place the charateristic in global for use in button
-
+                 // We look for any "Notify" charateristics
                 }else if char.properties.contains(CBCharacteristicProperties.notify) {
                         print("read and notify Characteristic \(char.uuid.uuidString)") // sent to console for debug purposes
                     LedReadState = char // Place read charateristic in global for use later
-                    peripheral.setNotifyValue(true, for: char)
+                    peripheral.setNotifyValue(true, for: char) // We turn on notify "listening"
                 }
             }
         }
     }
     
+    // If we get a notification of "Data"
     func peripheral(_ peripheral: CBPeripheral, didUpdateValueFor characteristic: CBCharacteristic, error: Error?) {
-
+            // We check to see if it is our data that is ready for us to process
             if characteristic.uuid == arduinoLEDstate {
                 let s = characteristic.value![0] // Get the ascii value of the value from the BLE device
                 let pz = Character(UnicodeScalar(s)) // Convert ascii to a charater
                 print (pz)
-                if pz == "N" {
+                if pz == "N" { // If the Arduino is sending us an "N" it means that the LED is "on"
                     led = true
-                    print("LED is on")
-                    stateLabel.text = "ON"
+                    print("LED is on") // sent to console for debug purposes
+                    stateLabel.text = "ON" // We change the text in the label and change the color to red
                     stateLabel.textColor = UIColor.red
                     stateLabel.textAlignment = .center
-                }else {
+                }else if pz == "X"{ // If the Arduino is sendig us an "X" it means that the LED is "off"
                     led = false
-                    print("LED is off")
-                    stateLabel.text = "OFF"
+                    print("LED is off") // sent to console for debug purposes
+                    stateLabel.text = "OFF" // We change the text on the label and change the color to blue
                     stateLabel.textColor = UIColor.blue
                     stateLabel.textAlignment = .center
                 }
             }
         
     }
-
+    // We can do something when we write a value to the Arduino. In this case we just print to the console.
     func peripheral(_ peripheral: CBPeripheral, didWriteValueFor characteristic: CBCharacteristic, error: Error?) {
-        print ("wrote value")
+        print ("wrote value") // sent to console for debug purposes
     }
     
     var centralManager : CBCentralManager!
