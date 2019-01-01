@@ -104,7 +104,7 @@ class ViewController: UIViewController, CBCentralManagerDelegate, CBPeripheralDe
             if characteristic.uuid == arduinoLEDstate {
                 let s = characteristic.value![0] // Get the ascii value of the value from the BLE device
                 let pz = Character(UnicodeScalar(s)) // Convert ascii to a charater
-                print (pz)
+                print ("Recieved value '\(pz)' from the ESP32")
                 if pz == "N" { // If the Arduino is sending us an "N" it means that the LED is "on"
                     led = true
                     print("LED is on") // sent to console for debug purposes
@@ -123,7 +123,7 @@ class ViewController: UIViewController, CBCentralManagerDelegate, CBPeripheralDe
     }
     // We can do something when we write a value to the Arduino. In this case we just print to the console.
     func peripheral(_ peripheral: CBPeripheral, didWriteValueFor characteristic: CBCharacteristic, error: Error?) {
-        print ("wrote value") // sent to console for debug purposes
+        print ("wrote value to ESP32") // sent to console for debug purposes
     }
     
     var centralManager : CBCentralManager!
